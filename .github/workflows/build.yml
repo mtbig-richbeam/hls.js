@@ -223,7 +223,7 @@ jobs:
       #     name: build
 
       - name: start SauceConnect tunnel
-        uses: tjenkinson/sauce-connect-action@991f9122bf5f616eddf524ea6487be9f593a9b27
+        uses: tjenkinson/sauce-connect-action@82eb96f260ec32749efdd98b299012d5b70440d2
         with:
           username: ${{ secrets.SAUCE_USERNAME }}
           accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
