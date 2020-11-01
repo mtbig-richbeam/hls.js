@@ -183,7 +183,7 @@ jobs:
           NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
 
   test_functional_required:
-    needs: [config, test_unit]
+    needs: [config, build]
     if: needs.config.outputs.canUseSauce == 'true'
     runs-on: ubuntu-latest
     strategy:
