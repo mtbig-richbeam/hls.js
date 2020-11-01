@@ -198,29 +198,29 @@ jobs:
             os: Windows 10
 
     steps:
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
 
-      - name: cache node_modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+      # - name: cache node_modules
+      #   uses: actions/cache@v2
+      #   env:
+      #     cache-name: cache-node-modules
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-build-${{ env.cache-name }}-
+      #       ${{ runner.os }}-build-
+      #       ${{ runner.os }}-
 
-      - name: use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12"
+      # - name: use Node.js
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: "12"
 
-      - name: download build
-        uses: actions/download-artifact@v2
-        with:
-          name: build
+      # - name: download build
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: build
 
       - name: start SauceConnect tunnel
         uses: tjenkinson/sauce-connect-action@ebeef40
