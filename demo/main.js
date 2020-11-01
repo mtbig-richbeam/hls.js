@@ -479,9 +479,10 @@ function loadSelectedStream () {
 
   hls.on(Hls.Events.FRAG_BUFFERED, function (eventName, data) {
     const event = {
-      type: data.frag.type + ' fragment',
+      type: data.frag.type + (data.part ? ' part' : ' fragment'),
       id: data.frag.level,
       id2: data.frag.sn,
+      id3: data.part ? data.part.index : undefined,
       time: data.stats.loading.start - events.t0,
       latency: data.stats.loading.first - data.stats.loading.start,
       load: data.stats.loading.end - data.stats.loading.first,
@@ -1024,6 +1025,7 @@ function checkBuffer () {
       log += `Latency: ${hls.latency}\n`;
       log += `Edge Stall: ${hls.latencyController.edgeStalled}\n`;
       log += `Playback rate: ${video.playbackRate.toFixed(2)}\n`;
+      log += `Bandwidth Estimate: ${hls.bandwidthEstimate.toFixed(3)}\n`;
       if (hls.media) {
         for (const type in tracks) {
           log += `Buffer for ${type} contains:${timeRangesToString(tracks[type].buffer.buffered)}\n`;
